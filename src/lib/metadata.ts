@@ -1,0 +1,43 @@
+import type { Metadata } from "next";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mtxhosting.com";
+
+const defaultTitle = "MTX Hosting — Where Great Projects Live";
+const defaultDescription =
+  "Managed hosting for agencies, developers, and ambitious projects. Fast, secure, EU-hosted — backed by people who actually know code.";
+
+export function buildMetadata({
+  title,
+  description = defaultDescription,
+  path = "",
+}: {
+  title: string;
+  description?: string;
+  path?: string;
+}): Metadata {
+  const url = `${siteUrl}${path}`;
+  const fullTitle = title === defaultTitle ? title : `${title} | MTX Hosting`;
+
+  return {
+    title: fullTitle,
+    description,
+    metadataBase: new URL(siteUrl),
+    alternates: { canonical: url },
+    openGraph: {
+      title: fullTitle,
+      description,
+      url,
+      siteName: "MTX Hosting",
+      locale: "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+    },
+  };
+}
+
+export { defaultTitle, defaultDescription, siteUrl };
