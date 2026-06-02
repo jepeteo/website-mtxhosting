@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,23 +9,29 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        content: "1400px",
+      },
       colors: {
-        bg: "#080c10",
-        surface: "#0d1318",
-        accent: "#00e5ff",
-        accent2: "#0077ff",
-        ink: "#e8edf2",
-        muted: "#5a6a7a",
-        border: "rgba(255,255,255,0.07)",
-        card: "rgba(255,255,255,0.03)",
+        bg: "rgb(var(--color-bg) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        accent2: "rgb(var(--color-accent-2) / <alpha-value>)",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        border: "var(--color-border)",
+        card: "var(--color-card)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       backgroundImage: {
-        "gradient-accent": "linear-gradient(135deg, #00e5ff, #0077ff)",
-        "gradient-text": "linear-gradient(90deg, #00e5ff, #0077ff)",
+        "gradient-accent":
+          "linear-gradient(135deg, rgb(var(--color-accent)), rgb(var(--color-accent-2)))",
+        "gradient-text":
+          "linear-gradient(90deg, rgb(var(--color-accent)), rgb(var(--color-accent-2)))",
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease both",
