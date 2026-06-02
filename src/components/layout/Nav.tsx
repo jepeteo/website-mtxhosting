@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/Button";
 
 const navLinks = [
   { label: "Plans", href: "/plans" },
+  { label: "WordPress", href: "/managed-wordpress" },
+  { label: "Next.js", href: "/managed-nextjs" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -18,8 +20,8 @@ export function Nav() {
           aria-label="Main navigation"
         >
           <Logo />
-          <div className="flex items-center gap-4 md:gap-8">
-            <ul className="hidden items-center gap-9 md:flex">
+          <div className="flex items-center gap-3 md:gap-6">
+            <ul className="hidden items-center gap-7 lg:flex">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -32,7 +34,7 @@ export function Nav() {
               ))}
             </ul>
             <ThemeToggle />
-            <Button href="/contact" variant="nav" size="sm" className="hidden md:inline-flex">
+            <Button href="/contact" variant="nav" size="sm">
               Get Started
             </Button>
           </div>

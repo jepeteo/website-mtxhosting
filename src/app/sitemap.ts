@@ -2,7 +2,15 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/plans", "/contact", "/legal/privacy", "/legal/terms"];
+  const routes = [
+    "",
+    "/plans",
+    "/managed-wordpress",
+    "/managed-nextjs",
+    "/contact",
+    "/legal/privacy",
+    "/legal/terms",
+  ];
 
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,
