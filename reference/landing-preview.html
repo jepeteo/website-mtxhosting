@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MTX Hosting — Where Great Projects Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:       #080c10;
+    --surface:  #0d1318;
+    --border:   rgba(255,255,255,0.07);
+    --accent:   #00e5ff;
+    --accent2:  #0077ff;
+    --text:     #e8edf2;
+    --muted:    #5a6a7a;
+    --card-bg:  rgba(255,255,255,0.03);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease, opacity 0.2s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(0,229,255,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
+  }
+
+  /* Background grid + glow */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30%; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse, rgba(0,119,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(8,12,16,0.7);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 800; color: #000;
+    letter-spacing: 0;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    display: flex; gap: 36px; list-style: none;
+  }
+  nav ul a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: var(--accent) !important;
+    color: #000 !important;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    padding: 6px 14px; border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; transform: scale(1); }
+    50% { opacity:0.4; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 .line2 {
+    display: block;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000; font-weight: 700;
+    padding: 14px 32px; border-radius: 8px;
+    border: none; font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; cursor: none;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text); font-weight: 600;
+    padding: 14px 32px; border-radius: 8px;
+    border: 1px solid var(--border);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; cursor: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex; gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 80px;
+    animation: fadeUp 0.6s 0.4s ease both;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+  }
+  .stat {
+    flex: 1;
+    padding: 24px 32px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-val {
+    font-size: 2rem; font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 60%, var(--muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* PLANS SECTION */
+  .plans {
+    position: relative; z-index: 1;
+    padding: 100px 48px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    margin-bottom: 60px;
+    line-height: 1.1;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .plan-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+    overflow: hidden;
+  }
+  .plan-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .plan-card:hover { border-color: rgba(0,229,255,0.25); transform: translateY(-4px); }
+  .plan-card:hover::before { opacity: 1; }
+
+  .plan-card.featured {
+    border-color: rgba(0,229,255,0.3);
+    background: rgba(0,229,255,0.04);
+  }
+  .plan-card.featured::before { opacity: 1; }
+
+  .featured-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--accent);
+    color: #000; font-weight: 700;
+    font-size: 0.65rem; padding: 4px 10px;
+    border-radius: 100px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan-name {
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .plan-price {
+    font-size: 3rem; font-weight: 800;
+    letter-spacing: -0.04em; line-height: 1;
+    margin-bottom: 6px;
+  }
+  .plan-price sup { font-size: 1.4rem; vertical-align: super; }
+  .plan-cycle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .plan-features {
+    list-style: none; display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 36px;
+  }
+  .plan-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .plan-features li::before {
+    content: '✓';
+    color: var(--accent); font-weight: 700; font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .plan-btn {
+    display: block; width: 100%;
+    text-align: center;
+    padding: 12px; border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.88rem;
+    text-decoration: none; cursor: none;
+    transition: all 0.2s;
+  }
+  .plan-btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .plan-btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .plan-btn-filled {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000;
+  }
+  .plan-btn-filled:hover { opacity: 0.85; }
+
+  /* FEATURES ROW */
+  .features {
+    position: relative; z-index: 1;
+    padding: 0 48px 100px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .feat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: border-color 0.2s;
+  }
+  .feat-card:hover { border-color: rgba(0,229,255,0.2); }
+  .feat-icon {
+    font-size: 1.6rem; margin-bottom: 14px;
+  }
+  .feat-title {
+    font-size: 0.95rem; font-weight: 700; margin-bottom: 8px;
+  }
+  .feat-desc {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+  }
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+  }
+  .footer-right a { color: var(--accent); text-decoration: none; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark">MTX</div>
+    <span>MTX</span>Hosting
+  </div>
+  <ul>
+    <li><a href="#">Plans</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Managed</a></li>
+    <li><a href="#">Docs</a></li>
+    <li><a href="#" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Powered by MTX Studio Infrastructure
+  </div>
+
+  <h1>
+    Where Great<br>
+    <span class="line2">Projects Live.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Managed hosting built for agencies, developers, and ambitious projects.
+    Fast. Secure. Backed by people who actually know code.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-primary">Start Hosting →</button>
+    <button class="btn-ghost">See Plans</button>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-val">99.9%</div>
+      <div class="stat-label">Uptime SLA</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">&lt;80ms</div>
+      <div class="stat-label">Avg Response</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">24/7</div>
+      <div class="stat-label">Expert Support</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">EU</div>
+      <div class="stat-label">Data Centers</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans">
+  <div class="section-label">// pricing</div>
+  <h2 class="section-title">Simple, honest pricing.</h2>
+
+  <div class="plans-grid">
+    <!-- Starter -->
+    <div class="plan-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>€</sup>9</div>
+      <div class="plan-cycle">per month / billed annually</div>
+      <ul class="plan-features">
+        <li>1 Website</li>
+        <li>10 GB SSD Storage</li>
+        <li>Free SSL Certificate</li>
+        <li>Daily Backups</li>
+        <li>Email Support</li>
+      </ul>
+      <a href="#" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+
+    <!-- Pro (featured) -->
+    <div class="plan-card featured">
+      <div class="featured-badge">Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>€</sup>24</div>
+      <div class="plan-cycle">per month / billed annually</div>
+      <ul class="plan-features">
+        <li>5 Websites</li>
+        <li>50 GB NVMe Storage</li>
+        <li>Free SSL + CDN</li>
+        <li>Hourly Backups</li>
+        <li>Priority Support</li>
+        <li>Staging Environment</li>
+      </ul>
+      <a href="#" class="plan-btn plan-btn-filled">Get Started</a>
+    </div>
+
+    <!-- Agency -->
+    <div class="plan-card">
+      <div class="plan-name">Agency</div>
+      <div class="plan-price"><sup>€</sup>79</div>
+      <div class="plan-cycle">per month / billed annually</div>
+      <ul class="plan-features">
+        <li>Unlimited Websites</li>
+        <li>200 GB NVMe Storage</li>
+        <li>Full CDN + WAF</li>
+        <li>Real-time Backups</li>
+        <li>Dedicated Account Manager</li>
+        <li>White-label Option</li>
+      </ul>
+      <a href="#" class="plan-btn plan-btn-outline">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-label">// why mtx</div>
+  <h2 class="section-title" style="margin-bottom:40px;">Built different.</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">NVMe Speed</div>
+      <div class="feat-desc">Storage that's 10x faster than standard SSD. Your site loads before they blink.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">Zero-trust Security</div>
+      <div class="feat-desc">WAF, DDoS protection, malware scanning. Your project stays safe by default.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔁</div>
+      <div class="feat-title">Auto Backups</div>
+      <div class="feat-desc">Daily or hourly snapshots. Restore any version in one click, no panic needed.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🧑‍💻</div>
+      <div class="feat-title">Dev-Ready</div>
+      <div class="feat-desc">Staging environments, Git deploy, SSH access. We speak your language.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 MTX Hosting — a <a href="#" style="color:var(--accent);text-decoration:none;">MTX Studio</a> product</div>
+  <div class="footer-right">Built in Berlin · Hosted in the EU · <a href="#">Privacy</a> · <a href="#">Terms</a></div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('button, a, .plan-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+      ring.style.borderColor = 'rgba(0,229,255,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+      ring.style.borderColor = 'rgba(0,229,255,0.4)';
+    });
+  });
+</script>
+</body>
+</html>

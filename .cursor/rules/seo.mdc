@@ -1,0 +1,35 @@
+---
+description: SEO and metadata rules
+globs: src/app/**/page.tsx, src/app/**/layout.tsx, src/app/sitemap.ts, src/app/robots.ts, src/lib/metadata.ts
+alwaysApply: false
+---
+
+# SEO Rules
+
+## Metadata
+- Every page exports `generateMetadata` (or static `metadata`) using the shared `buildMetadata({ title, description, path })` helper in `lib/metadata.ts`.
+- Titles < 60 chars, descriptions < 155 chars.
+- Set canonical URLs from `NEXT_PUBLIC_SITE_URL`.
+
+## Open Graph
+- Per-page OG title/description + OG image.
+- `twitter:card = summary_large_image`.
+
+## Structured data (JSON-LD)
+- `Organization` schema in root layout (name: MTX Hosting, parent: MTX Studio, areaServed: EU).
+- `Product` + `Offer` schema on `/plans` and service detail pages, prices from `lib/plans.ts`.
+
+## Files
+- `sitemap.ts` lists all public routes.
+- `robots.ts` allows all, points to sitemap.
+
+## Target terms (weave naturally, no stuffing)
+- "managed WordPress hosting EU"
+- "managed Next.js hosting"
+- "agency hosting Berlin"
+- "EU web hosting with support"
+
+## Rules
+- Real `<h1>` once per page, logical heading order.
+- Descriptive link text, no "click here".
+- Image `alt` text describes content, not keywords.

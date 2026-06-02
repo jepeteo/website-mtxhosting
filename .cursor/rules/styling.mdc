@@ -1,0 +1,40 @@
+---
+description: Styling and design system rules
+globs: src/**/*.tsx, src/**/*.css, tailwind.config.ts
+alwaysApply: false
+---
+
+# Styling Rules
+
+## Tokens
+Use Tailwind tokens, never raw hex in JSX:
+- `bg-bg`, `bg-surface`, `text-ink`, `text-muted`
+- `text-accent`, `border-accent`, accent gradient for primary CTAs
+
+Gradient utility for primary buttons/headlines:
+`bg-gradient-to-br from-accent to-accent2`
+
+## Fonts
+- Headings: `font-display` (Syne), tracking tight (`tracking-tighter` on big headings).
+- Labels/eyebrows/prices-cycle/stat-labels: `font-mono` (DM Mono).
+- Eyebrow labels use a `//` prefix and uppercase, e.g. `// pricing`.
+
+## Components
+- Card surfaces: hairline border `border-white/[0.07]`, rounded `rounded-2xl`, subtle bg `bg-white/[0.03]`.
+- Hover: lift (`-translate-y-1`) + accent border, smooth `transition`.
+- Featured pricing card: accent top-border, tinted bg `bg-accent/[0.04]`, "Popular" pill.
+- Use `cva` for Button and PricingCard variants.
+
+## Layout
+- Mobile-first. Base = mobile, scale with `md:` / `lg:`.
+- Max content width ~1100px, centered, generous vertical rhythm.
+- Background: subtle cyan grid + soft radial glow top-center (fixed, pointer-events-none, z-0).
+
+## Motion
+- Staggered fade-up on hero load via `animation-delay`.
+- CSS transitions for hover. No heavy animation libraries.
+- Custom cursor (dot + lagging ring) desktop-only; disable on touch/mobile.
+
+## Accessibility
+- AA contrast. Use `text-ink` for body, reserve `text-accent` for large text / borders / links.
+- Visible focus rings. Real semantic elements. `alt` / `aria-label` always.

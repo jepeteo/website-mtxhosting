@@ -1,0 +1,30 @@
+---
+description: Project-wide context and conventions for MTX Hosting
+alwaysApply: true
+---
+
+# MTX Hosting — Project Rules
+
+You are working on **MTX Hosting**, the managed hosting marketing site for MTX Studio.
+
+## Before generating code
+- Read `docs/PRD.md` for scope and pages.
+- Read `docs/SKILLS.md` for folder structure, naming, and patterns.
+- Read `BRIEF.md` for brand, color, and design intent.
+
+## Hard rules
+- Stack: Next.js 15 (App Router), TypeScript, Tailwind CSS. No other frameworks.
+- This is a **static marketing site**. No databases, no auth, no provisioning logic in V1.
+- Pricing data lives ONLY in `lib/plans.ts`. Never hardcode prices in components.
+- Default to server components; add `"use client"` only when interactivity requires it.
+- Tailwind only for styling, using the brand tokens from the Tailwind config — no raw hex in markup, no CSS-in-JS.
+- Dark theme only. Brand colors: bg #080c10, accent #00e5ff, accent2 #0077ff, ink #e8edf2, muted #5a6a7a.
+- Fonts via `next/font`: Syne (display), DM Mono (mono/labels).
+
+## Quality bar
+- Lighthouse 95+. LCP < 1.5s.
+- Semantic, accessible HTML (AA contrast, keyboard nav, focus rings).
+- Conventional commit messages.
+
+## When unsure
+Ask a focused question rather than inventing scope. Keep changes targeted to the request.
