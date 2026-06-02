@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { planFaqs } from "@/lib/plans";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingTable } from "@/components/pricing/PricingTable";
+import { Container } from "@/components/layout/Container";
 import { SectionLabel, SectionTitle } from "@/components/ui/Badge";
 
 export const metadata: Metadata = buildMetadata({
@@ -14,12 +15,12 @@ export const metadata: Metadata = buildMetadata({
 
 export default function PlansPage() {
   return (
-    <div className="relative z-10 px-6 pb-24 pt-32 md:px-12">
-      <div className="mx-auto max-w-6xl">
+    <div className="relative z-10 pb-24 pt-32">
+      <Container>
         <SectionLabel>pricing</SectionLabel>
         <SectionTitle className="mb-4">Compare plans.</SectionTitle>
         <p className="mb-10 max-w-xl text-muted">
-          Every plan includes free SSL, EU hosting, malware scanning, and migration.
+          Every plan includes free SSL, EU hosting, malware scanning, and free migration.
           Pick what fits — upgrade anytime.
         </p>
 
@@ -28,7 +29,7 @@ export default function PlansPage() {
 
         <section className="mt-20" aria-labelledby="faq-heading">
           <SectionLabel>faq</SectionLabel>
-          <h2 id="faq-heading" className="mb-8 text-3xl font-extrabold tracking-tight">
+          <h2 id="faq-heading" className="mb-8 font-heading text-3xl font-semibold tracking-tight">
             Common questions
           </h2>
           <dl className="divide-y divide-border rounded-2xl border border-border">
@@ -40,7 +41,7 @@ export default function PlansPage() {
             ))}
           </dl>
         </section>
-      </div>
+      </Container>
     </div>
   );
 }

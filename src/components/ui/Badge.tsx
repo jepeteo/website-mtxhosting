@@ -37,7 +37,7 @@ export function SectionTitle({
   return (
     <h2
       className={cn(
-        "text-balance text-3xl font-extrabold tracking-tight md:text-5xl",
+        "font-heading text-balance text-3xl font-semibold tracking-tight md:text-5xl",
         className,
       )}
     >

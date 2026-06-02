@@ -4,7 +4,7 @@ export function Logo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2.5 text-xl font-extrabold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      className="flex items-center gap-2.5 font-heading text-xl font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       aria-label="MTX Hosting home"
     >
       <span

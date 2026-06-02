@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { Container } from "@/components/layout/Container";
 
 const MTX_STUDIO_URL = "https://mtxstudio.co.uk";
 
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 md:flex-row md:items-center md:justify-between md:px-12">
+      <Container className="flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between">
         <p className="font-mono text-xs text-muted">
           © 2026 MTX Hosting — a{" "}
           <Link
@@ -19,7 +20,7 @@ export function Footer() {
           product
         </p>
         <p className="font-mono text-xs text-muted">
-          Built in Berlin · Hosted in the EU ·{" "}
+          Hosted in the EU ·{" "}
           <Link
             href="/legal/privacy"
             className="text-accent transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -34,7 +35,7 @@ export function Footer() {
             Terms
           </Link>
         </p>
-      </div>
+      </Container>
     </footer>
   );
 }

@@ -19,7 +19,7 @@ export function PricingCard({ plan }: PricingCardProps) {
       <p className="mb-4 text-xs font-bold uppercase tracking-widest text-muted">
         {plan.name}
       </p>
-      <p className="text-5xl font-extrabold tracking-tight">
+      <p className="font-heading text-5xl font-semibold tracking-tight">
         <sup className="text-2xl">€</sup>
         {price}
       </p>

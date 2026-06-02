@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { buildMetadata } from "@/lib/metadata";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Container } from "@/components/layout/Container";
 import { SectionLabel, SectionTitle } from "@/components/ui/Badge";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,8 +14,8 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <div className="relative z-10 px-6 pb-24 pt-32 md:px-12">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+    <div className="relative z-10 pb-24 pt-32">
+      <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionLabel>contact</SectionLabel>
           <SectionTitle className="mb-4">Let&apos;s talk hosting.</SectionTitle>
@@ -48,7 +49,7 @@ export default function ContactPage() {
             <ContactForm />
           </Suspense>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

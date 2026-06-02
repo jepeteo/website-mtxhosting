@@ -13,8 +13,8 @@ export function BillingToggle() {
         <button
           type="button"
           className={cn(
-            "rounded-full px-5 py-2 font-mono text-xs uppercase tracking-wider transition-colors",
-            "bg-accent text-black",
+            "rounded-full px-5 py-2 font-mono text-xs uppercase tracking-wider",
+            "bg-gradient-accent text-black",
           )}
           aria-pressed="true"
         >
@@ -30,9 +30,7 @@ export function BillingToggle() {
           Monthly
         </button>
       </div>
-      <p className="font-mono text-xs text-muted">
-        Prices shown per month, billed annually
-      </p>
+      <p className="font-mono text-xs text-muted">Prices shown per month, billed annually</p>
     </div>
   );
 }

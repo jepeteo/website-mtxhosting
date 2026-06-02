@@ -8,7 +8,10 @@ export function PricingTable() {
       <table className="w-full min-w-[640px] border-collapse text-left text-sm">
         <thead>
           <tr className="border-b border-border bg-surface">
-            <th scope="col" className="p-4 font-mono text-xs uppercase tracking-wider text-muted">
+            <th
+              scope="col"
+              className="p-4 font-mono text-xs uppercase tracking-wider text-muted"
+            >
               Feature
             </th>
             {plans.map((plan) => (
@@ -20,7 +23,7 @@ export function PricingTable() {
                   plan.featured && "bg-accent/[0.04]",
                 )}
               >
-                <span className="block font-bold text-ink">{plan.name}</span>
+                <span className="block font-heading font-semibold text-ink">{plan.name}</span>
                 <span className="mt-1 block font-mono text-xs text-muted">
                   €{plan.priceAnnual}/mo
                 </span>

@@ -18,7 +18,7 @@ export function StatsBar() {
               index < 2 ? "border-b md:border-b-0" : ""
             }`}
           >
-            <p className="bg-gradient-to-br from-white to-muted bg-clip-text text-3xl font-extrabold tracking-tight text-transparent md:text-4xl">
+            <p className="font-heading bg-gradient-to-br from-ink to-muted bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl">
               {stat.value}
             </p>
             <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-widest text-muted">
