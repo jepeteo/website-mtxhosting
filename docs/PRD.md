@@ -34,7 +34,7 @@ MTX Hosting is the managed hosting offering of MTX Studio. The site's job is to 
 | `/plans`               | Full pricing comparison table, FAQ                             | P0       |
 | `/managed-wordpress`   | Service detail: managed WP hosting + support                   | P1       |
 | `/managed-nextjs`      | Service detail: managed Next.js / Vercel deployments           | P1       |
-| `/contact`             | Lead form (Formspree), expectations on response time           | P0       |
+| `/contact`             | Lead form (Resend), expectations on response time              | P0       |
 | `/legal/privacy`       | Privacy policy                                                 | P2       |
 | `/legal/terms`         | Terms of service                                               | P2       |
 
@@ -58,13 +58,13 @@ All plans: free SSL, EU data centers, 99.9% uptime SLA, malware scanning, free m
 - `PricingTable` — full comparison (on `/plans`).
 - `FeatureGrid` — 4-up feature cards.
 - `BillingToggle` — annual/monthly switch (client component).
-- `ContactForm` — Formspree-backed, client component, validation.
+- `ContactForm` — Resend via `/api/contact`, client component, validation.
 - `Nav` / `Footer` — shared, sticky nav, MTX Studio attribution in footer.
 - `CTASection` — reusable bottom-of-page conversion block.
 
 ## 8. Conversion flow
 
-Plan CTA → `/contact?plan=pro` (prefill plan) → form submit → Formspree email to MTX → manual onboarding follow-up.
+Plan CTA → `/contact?plan=pro` (prefill plan) → form submit → Resend email to ops → manual onboarding follow-up.
 
 ## 9. SEO
 

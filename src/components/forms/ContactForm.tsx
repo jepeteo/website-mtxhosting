@@ -5,8 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { plans, getPlanById } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 
-const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-
 export function ContactForm() {
   const searchParams = useSearchParams();
   const planParam = searchParams.get("plan") ?? "";
@@ -45,20 +43,13 @@ export function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    if (!formspreeId || formspreeId === "xxxxxxx") {
-      setStatus("error");
-      return;
-    }
-
     setStatus("loading");
+    setErrors({});
 
     try {
-      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
           email,
@@ -67,15 +58,24 @@ export function ContactForm() {
         }),
       });
 
+      const data = (await response.json().catch(() => ({}))) as {
+        errors?: Record<string, string>;
+        error?: string;
+      };
+
       if (response.ok) {
         setStatus("success");
         setName("");
         setEmail("");
         setMessage("");
         setPlan("");
-      } else {
-        setStatus("error");
+        return;
       }
+
+      if (response.status === 400 && data.errors) {
+        setErrors(data.errors);
+      }
+      setStatus("error");
     } catch {
       setStatus("error");
     }
@@ -189,9 +189,6 @@ export function ContactForm() {
       {status === "error" && (
         <p className="text-sm text-red-400" role="alert">
           Something went wrong. Check your connection or try again later.
-          {!formspreeId || formspreeId === "xxxxxxx"
-            ? " (Formspree is not configured yet.)"
-            : null}
         </p>
       )}
 

@@ -14,7 +14,7 @@ A static marketing site (no backend) that presents hosting plans, service detail
 | Language     | TypeScript                      |
 | Styling      | Tailwind CSS                    |
 | Fonts        | Syne (display), DM Mono (mono)  |
-| Forms        | Formspree (no backend)          |
+| Forms        | Resend via `/api/contact`       |
 | Analytics    | Vercel Analytics                |
 | Deploy       | Vercel                          |
 
@@ -41,9 +41,13 @@ pnpm start
 Copy `.env.example` to `.env.local`:
 
 ```
-NEXT_PUBLIC_FORMSPREE_ID=xxxxxxx
+RESEND_API_KEY=re_xxxxxxx
+RESEND_FROM_EMAIL=MTX Hosting <hosting@ops.mtxstudio.com>
+CONTACT_TO_EMAIL=hosting@ops.mtxstudio.com
 NEXT_PUBLIC_SITE_URL=https://mtxhosting.com
 ```
+
+Use the same Resend API key and verified `ops.mtxstudio.com` domain as other MTX Studio apps.
 
 ---
 

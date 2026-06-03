@@ -88,7 +88,7 @@ export interface Plan {
 
 ## Forms
 
-- `ContactForm` posts to Formspree via `fetch`, no native `<form>` server action in V1.
+- `ContactForm` posts to `/api/contact`; the route sends mail via Resend (server-only `RESEND_API_KEY`).
 - Validate on client: required name, valid email, message length.
 - Show success/error states inline. No external toast lib needed.
 - Never put user data in URL params.
