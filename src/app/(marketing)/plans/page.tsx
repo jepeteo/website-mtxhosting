@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
+import { plansProductJsonLd } from "@/lib/json-ld";
 import { planFaqs } from "@/lib/plans";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingTable } from "@/components/pricing/PricingTable";
 import { Container } from "@/components/layout/Container";
@@ -16,6 +18,7 @@ export const metadata: Metadata = buildMetadata({
 export default function PlansPage() {
   return (
     <div className="relative z-10 pb-24 pt-32">
+      <JsonLd data={plansProductJsonLd()} />
       <Container>
         <SectionLabel>pricing</SectionLabel>
         <SectionTitle className="mb-4">Compare plans.</SectionTitle>

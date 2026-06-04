@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
+import { serviceJsonLd } from "@/lib/json-ld";
 import { managedWordPress } from "@/lib/services";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { ServiceFeatures } from "@/components/sections/ServiceFeatures";
 import { ServiceHighlights } from "@/components/sections/ServiceHighlights";
@@ -15,6 +17,7 @@ export const metadata: Metadata = buildMetadata({
 export default function ManagedWordPressPage() {
   return (
     <>
+      <JsonLd data={serviceJsonLd(managedWordPress)} />
       <ServiceHero service={managedWordPress} />
       <ServiceHighlights service={managedWordPress} />
       <ServiceFeatures service={managedWordPress} />

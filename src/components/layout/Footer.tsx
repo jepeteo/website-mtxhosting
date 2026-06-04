@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
-
-const MTX_STUDIO_URL = "https://mtxstudio.co.uk";
+import { mtxStudioUrl } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -10,7 +9,7 @@ export function Footer() {
         <p className="font-mono text-xs text-muted">
           © 2026 MTX Hosting — a{" "}
           <Link
-            href={MTX_STUDIO_URL}
+            href={mtxStudioUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"

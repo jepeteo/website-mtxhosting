@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mtxhosting.com";
+import { siteUrl } from "@/lib/site";
 
 const defaultTitle = "MTX Hosting — Where Great Projects Live";
 const defaultDescription =
@@ -29,7 +27,7 @@ export function buildMetadata({
       description,
       url,
       siteName: "MTX Hosting",
-      locale: "en_GB",
+      locale: "en",
       type: "website",
     },
     twitter: {

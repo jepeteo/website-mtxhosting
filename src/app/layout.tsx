@@ -3,6 +3,8 @@ import { Syne, DM_Mono, Space_Grotesk } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationJsonLd } from "@/lib/json-ld";
 import { buildMetadata, defaultTitle, defaultDescription } from "@/lib/metadata";
 import "@/styles/globals.css";
 
@@ -59,6 +61,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="relative min-h-screen overflow-x-hidden">
+        <JsonLd data={organizationJsonLd()} />
         <div className="pointer-events-none fixed inset-0 z-0 bg-grid" aria-hidden />
         <div
           className="pointer-events-none fixed -top-[30%] left-1/2 z-0 h-[600px] w-[900px] -translate-x-1/2 bg-glow"
