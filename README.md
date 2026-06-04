@@ -16,7 +16,7 @@ A static marketing site (no backend) that presents hosting plans, service detail
 | Framework    | Next.js 15 (App Router)         |
 | Language     | TypeScript                      |
 | Styling      | Tailwind CSS                    |
-| Fonts        | Syne, Space Grotesk, DM Mono    |
+| Fonts        | Syne (body + headings), DM Mono |
 | Forms        | Resend via `/api/contact`       |
 | Analytics    | Vercel Analytics                |
 | Deploy       | Vercel                          |

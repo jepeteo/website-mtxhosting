@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/layout/Logo";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { MobileNav } from "@/components/layout/MobileNav";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -33,8 +33,8 @@ export function Nav() {
                 </li>
               ))}
             </ul>
-            <ThemeToggle />
-            <Button href="/contact" variant="nav" size="sm">
+            <MobileNav />
+            <Button href="/contact" variant="nav" size="sm" className="hidden sm:inline-flex">
               Get Started
             </Button>
           </div>

@@ -100,7 +100,7 @@ export const managedNextJs: ServicePage = {
     "Node & edge runtimes",
     "EU-friendly hosting",
   ],
-  cta: { label: "Talk about Next.js hosting", href: "/contact?plan=pro" },
+  cta: { label: "Talk about Next.js hosting", href: "/contact?plan=pro&type=nextjs" },
 };
 
 export const services = [managedWordPress, managedNextJs];

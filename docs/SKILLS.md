@@ -67,7 +67,7 @@ colors: {
 ```
 
 Fonts via `next/font`:
-- `Syne` → `--font-display` (headings)
+- `Syne` → `--font-body` and `--font-heading`
 - `DM_Mono` → `--font-mono` (labels, code, prices cycle text)
 
 ## Data

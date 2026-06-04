@@ -23,7 +23,7 @@ Write and refine all user-facing copy for MTX Hosting.
 ## Rules
 - Lead with benefit, not feature.
 - Differentiate on managed service, EU hosting, and dev expertise — not lowest price.
-- Keep the "Built in Berlin · Hosted in the EU" footer line.
+- Footer: "Hosted in the EU" — MTX is UK-based; never mention Berlin or founder personal locations.
 - No purple-prose, no buzzword bingo, no fake urgency.
 - Match length to layout; coordinate with ui-builder on space.
 

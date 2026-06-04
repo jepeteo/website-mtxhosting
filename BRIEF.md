@@ -32,7 +32,7 @@ Dark theme is the identity. Do not ship a light version in V1.
 
 ## Typography
 
-- **Display / headings:** Syne (700–800), tight letter-spacing (-0.03 to -0.04em).
+- **Display / headings:** Syne (600–800), tight letter-spacing (-0.03 to -0.04em).
 - **Mono / labels / code:** DM Mono — used for eyebrow labels (`// pricing`), price cycles, stat labels, footer.
 - Body uses Syne 400 for cohesion, or a clean sans if readability needs it at small sizes.
 
@@ -59,9 +59,9 @@ Dark theme is the identity. Do not ship a light version in V1.
 
 ## Footer line
 
-`© 2026 MTX Hosting — a MTX Studio product · Built in Berlin · Hosted in the EU`
+`© 2026 MTX Hosting — a MTX Studio product · Hosted in the EU`
 
-The "Built in Berlin · Hosted in the EU" is a real differentiator. Keep it.
+MTX Studio is a UK company. Do not reference founder personal locations or non-UK cities on the site. "Hosted in the EU" is the infrastructure differentiator.
 
 ## Don'ts
 

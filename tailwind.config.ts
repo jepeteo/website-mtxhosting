@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       maxWidth: {
-        content: "1400px",
+        content: "72rem",
       },
       colors: {
         bg: "rgb(var(--color-bg) / <alpha-value>)",

@@ -108,6 +108,16 @@ export const planFaqs = [
     answer:
       "Pick a plan and send us a message via the contact form. We’ll reply within one business day to onboard you manually.",
   },
+  {
+    question: "WordPress vs Next.js — what’s different on the same plans?",
+    answer:
+      "Plans are managed service tiers, not one-size-fits-all disk quotas. WordPress sites typically use EU shared hosting with storage and staging as listed. Next.js apps use Git-based deploys (often on our Vercel team or yours) — we align project count, preview environments, and support to your tier instead of raw GB.",
+  },
+  {
+    question: "Do I need my own Vercel account for Next.js?",
+    answer:
+      "Not necessarily. Most clients use fully managed hosting on the MTX Studio Vercel team with a single MTX invoice. If you need your own Vercel billing entity, we join your team as collaborators — same managed playbook, different ownership.",
+  },
 ];
 
 export function getPlanById(id: string): Plan | undefined {

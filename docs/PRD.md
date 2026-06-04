@@ -72,7 +72,7 @@ Plan CTA → `/contact?plan=pro` (prefill plan) → form submit → Resend email
 - OG image per page.
 - `sitemap.ts` + `robots.ts`.
 - JSON-LD: `Organization` + `Product`/`Offer` on plan pages.
-- Target terms: "managed WordPress hosting EU", "managed Next.js hosting", "agency hosting Berlin".
+- Target terms: "managed WordPress hosting EU", "managed Next.js hosting", "managed hosting UK", "EU web hosting with support".
 
 ## 10. Performance targets
 

@@ -1,7 +1,7 @@
 const stats = [
   { value: "99.9%", label: "Uptime SLA" },
-  { value: "<80ms", label: "Avg Response" },
-  { value: "24/7", label: "Expert Support" },
+  { value: "Fast", label: "Edge Delivery" },
+  { value: "24/7", label: "Monitoring" },
   { value: "EU", label: "Data Centers" },
 ];
 

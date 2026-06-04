@@ -1,4 +1,4 @@
-import { plans } from "@/lib/plans";
+import { plans, planFaqs } from "@/lib/plans";
 import type { ServicePage } from "@/lib/services";
 import { mtxStudioUrl, siteUrl } from "@/lib/site";
 
@@ -16,10 +16,10 @@ export function organizationJsonLd() {
       name: "MTX Studio",
       url: mtxStudioUrl,
     },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
+    areaServed: [
+      { "@type": "Place", name: "European Union" },
+      { "@type": "Country", name: "United Kingdom" },
+    ],
   };
 }
 
@@ -46,6 +46,21 @@ export function plansProductJsonLd() {
   };
 }
 
+export function faqPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: planFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 export function serviceJsonLd(service: ServicePage) {
   return {
     "@context": "https://schema.org",
@@ -58,9 +73,9 @@ export function serviceJsonLd(service: ServicePage) {
       name: "MTX Hosting",
       url: siteUrl,
     },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
+    areaServed: [
+      { "@type": "Place", name: "European Union" },
+      { "@type": "Country", name: "United Kingdom" },
+    ],
   };
 }

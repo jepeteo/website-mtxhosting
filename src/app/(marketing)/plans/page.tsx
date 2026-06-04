@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
-import { plansProductJsonLd } from "@/lib/json-ld";
+import { faqPageJsonLd, plansProductJsonLd } from "@/lib/json-ld";
 import { planFaqs } from "@/lib/plans";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
@@ -19,6 +19,7 @@ export default function PlansPage() {
   return (
     <div className="relative z-10 pb-24 pt-32">
       <JsonLd data={plansProductJsonLd()} />
+      <JsonLd data={faqPageJsonLd()} />
       <Container>
         <SectionLabel>pricing</SectionLabel>
         <SectionTitle className="mb-4">Compare plans.</SectionTitle>
